@@ -8,6 +8,20 @@ Created on Thu Sep  8 19:19:15 2016
 #Group C&D
 
 print (1)
+
+##Prof G - All of the doc headers need to be inside the function definition.
+##Prof G - Here's an example.
+
+def mynewfunction():
+    """
+    This is an awesome function that always returns 0.
+    """
+    return(0)
+
+##Prof G - Try using help with your functions.
+help(mynewfunction)
+
+
 """
 Represent a small bilingual lexicon as a Python dictionary in the following 
 fashion {"merry":"god", "christmas":"jul","and":"och","happy":gott",
@@ -24,7 +38,9 @@ re.compile('<title>(.*)</title>')
 
 # We define a dictionary that includes the English words and corresponding 
 # Swedish words.
- 
+
+##Prof G - Should be defined inside the function definition or passed in as a
+##Prof G - parameter to the function.
 dict = {"merry":"god",
         "christmas":"jul",
         "and":"och",
@@ -47,6 +63,7 @@ def translate(inpString):
         # characters in the "", i.e, the inpString is empty, and another 
         # situation is that there are characters in the inpString.
     
+        ##Prof G - Nice defensive programming
         if (str(dict.get(i))) != "None":# the inpString is not empty
             # We translate the inpString by using the dictionary we defined 
             # above, and store the translated string into the 
@@ -65,6 +82,9 @@ def translate(inpString):
 print(translate("merry christmas and happy new year"))
 print(translate("happy new year"))
 print(translate(""))
+
+##Prof G - Now test the documentation, Ooops, not too helpful
+help(translate)
 
 print (2)
     
@@ -124,10 +144,13 @@ able to both encode and decode texts written in English.
 #Split the words in to letters
 #Use the letters to search in the dictionary
 #Create new words from the letters and sentence from words
- 
+
+##Prof G - Only need to import once in a module. I usually group all of
+##Prof G - the imports at the top of the file.
 import re
 # we create the key of the ROT-13 as reference
- 
+
+##Prof G - Define in the function or send as a parameter
 key = {'a':'n', 'b':'o', 'c':'p', 'd':'q', 'e':'r', 'f':'s', 'g':'t', 
        'h':'u', 'i':'v', 'j':'w', 'k':'x', 'l':'y', 'm':'z', 'n':'a', 
        'o':'b', 'p':'c', 'q':'d', 'r':'e', 's':'f', 't':'g', 'u':'h', 
@@ -160,6 +183,7 @@ def dec_enc(inpString):
                 newString = newString+word[i]
         # we add a space at the end of each word for readability.
         newString = newString+" "
+    ##Prof G - Should return the string instead of printing to the screen.
     print(newString)
  
 # we test the function dec_enc            
@@ -275,6 +299,7 @@ def make_ing_form(verb):
 print(make_ing_form('lie'))
 print(make_ing_form('see')) 
 # the function here does not work, because "see" is an exception.
+##Prof G - How do you fix it?
 print(make_ing_form('move'))
 print(make_ing_form('hug'))
 
@@ -374,7 +399,7 @@ and returns the list of words that are longer than n.
 #and returns the list of words that are longer than n.
 
 def filter_long_words(words, n):
-    
+  ##Prof G - This uses list comprehension but not filter. Nice implementation
   return [x for x in words if len(x) > n]
 
 # We test the function
@@ -406,6 +431,10 @@ def translate(words):
 #we test the function 
 print (translate(['Merry', 'christmas', 'and', 'happy', 'new', 'year']))
 
+##Prof G - Need a bit more in the test to see the resulting list. Map returns
+##Prof G - an iterable.
+print (list(translate(['Merry', 'christmas', 'and', 'happy', 'new', 'year'])))
+
 print (12)
 
 """
@@ -420,14 +449,17 @@ good exercise.)
 #help('filter')
 #help('reduce')
 # We define a function map()
-def map(function, sequence):
+
+##Prof G - rename the functions to avoid ambiguity with the built in functions
+##Prof G - of the same name.
+def mymap(function, sequence):
   result = []
   for item in sequence:
     result.append(function(item))
   return result
 
 # We define a function filter()
-def filter(function, sequence):
+def myfilter(function, sequence):
   # If sequence is a tuple or string, return the same type, 
   # else return a list.
   if isinstance(sequence, tuple):
@@ -449,7 +481,7 @@ def filter(function, sequence):
   return result
 
 # We define a function reduce() 
-def reduce(function, sequence, initial=None):
+def myreduce(function, sequence, initial=None):
   # We set the initial to NONE 
   result = initial if initial else sequence[0]
   if initial:
@@ -464,8 +496,11 @@ def reduce(function, sequence, initial=None):
 print (list(map(lambda x: x * 3, [1,2,3,4])))
 print (list(filter(lambda x: x.endswith('in'), ('sigma', 'pin', 'none'))))
 print (reduce(lambda x, y: x+y, [1, 2, 3, 4], 6))
-
-
+##Prof G - Compare results from the built-in function with your results
+print (list(mymap(lambda x: x * 3, [1,2,3,4])))
+print (list(myfilter(lambda x: x.endswith('in'), ('sigma', 'pin', 'none'))))
+print (myreduce(lambda x, y: x+y, [1, 2, 3, 4], 6))
+##Prof G - Works well!
 
 
 
