@@ -58,9 +58,7 @@ bin size. For example, if I call your function with [10, 50, 100] as bin
 sizes, the function should plot 12 histograms (3 for each numeric variable). 
 Group the histograms by the column name.
 '''
-# we define a function that accepts a list of numbers.
 
-def myhist(list1):
 
 def myhist(list1):
 # we define a function that accepts a list of numbers.
