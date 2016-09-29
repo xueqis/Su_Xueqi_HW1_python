@@ -62,6 +62,8 @@ Group the histograms by the column name.
 
 def myhist(list1):
 
+def myhist(list1):
+# we define a function that accepts a list of numbers.
 # we group the histograms by columns' names
 # and then for each bin size we set, print the histograms 
     for col in mycolumns[0:4]: 
