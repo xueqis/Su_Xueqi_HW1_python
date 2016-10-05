@@ -123,6 +123,7 @@ def char_freq_table(file_name):
     # we display a sorted and nicely formatted character frequency
     # table to the screen 
     print('Characters Frequency Table:')
+    
     for char in sorted(list(freq.items()), key=lambda x: x[1], reverse=True):
       print(char[0], freq[char[0]])
 
@@ -160,6 +161,7 @@ word, and a float indicating the length of the pause between each
 word spoken. 
 """
 
+##Prof G - Work fine except it ignores captial letters and numbers.
 import time, os
 from string import punctuation
 # we creat the icao dictionary
@@ -172,9 +174,9 @@ dict = { 'a':'alfa', 'b':'bravo', 'c':'charlie', 'd':'delta', 'e':'echo',
 # we define a function speak_ICAO. The default length of pause are 1s and 3s each.
 def speak_ICAO(name, icao_pause=1, word_pause=3):  
     # we open the file.  
-    file = open(name)
+    #file = open(name)
     # convert uppercase to lowercase.
-    word = file.read().lower()
+    word = name #file.read().lower()
     # remove punctuations in the file and replace them with space
     for pun in ('!','?',',','.',"'",'"',':'):
         word = word.replace(pun,'')
@@ -236,6 +238,9 @@ Write a program that given a text file will create a new text file in
 which all the lines from the original file are numbered from 1 to n
 (where n is the number of lines in the file). 
 """
+
+##Prof G - Works fine but you should add a space or some separator after the 
+##Prof G - number to separate it from the contents of the line.
 import re
 # define a new function
 def numbered_line(name):
@@ -249,7 +254,7 @@ def numbered_line(name):
         # insert \n after each line
         lines.insert(3*i+2,'\n')
     # we create a new file to store   
-    new_file = open('new_file.txt','w')
+    new_file = open("",'w')
     # write the new list lines in the file
     for i in range(len(lines)):
         new_file.writelines(lines[i])
@@ -258,7 +263,7 @@ def numbered_line(name):
 
 
 # check
-numbered_line('poem.txt')
+numbered_line("")
 
 print (7)
 
@@ -270,6 +275,7 @@ the text, divided by the number of word tokens).
 """
 from string import punctuation
 
+##Prof G - Doesn't calculate the correct average
 # define a new function
 def aver(name):
     # open the file.  
@@ -420,7 +426,7 @@ didn't.In any case, this isn't true...
 Well, with a probability of .9 it isn't. 
 
 """
-
+##Prof G - This doesn't read a file?
 import re
 # create a variable text to store text
 
